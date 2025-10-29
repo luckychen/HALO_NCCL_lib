@@ -1,0 +1,29 @@
+# Build directory
+build/
+*.o
+*.a
+*.so
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Compiled executables
+halo_test
+*.out
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CUDA specific
+*.cubin
+*.ptx
+*.fatbin
+*.module_id
