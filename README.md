@@ -259,16 +259,6 @@ For other platforms, adjust CMakeLists.txt accordingly.
 - Halo width must be consistent across all ranks
 - Assumes MPI_Init has been called by the user
 
-## Bug Fixes
-
-This project includes fixes for three critical issues:
-
-1. **Missing send buffer in non-rank-0 descriptors** - Now properly allocated
-2. **Missing move semantics** - Added move constructor and assignment operator
-3. **Double deletion in cleanup** - Fixed duplicate deletions
-
-See [BUG_FIX.md](BUG_FIX.md) for detailed information.
-
 ## Performance Notes
 
 - MPI communication happens once per iteration
