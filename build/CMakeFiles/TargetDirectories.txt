@@ -1,3 +1,0 @@
-/home/ceoas/chenchon/FEZ/HALO_lib_header/build/CMakeFiles/halo_test.dir
-/home/ceoas/chenchon/FEZ/HALO_lib_header/build/CMakeFiles/edit_cache.dir
-/home/ceoas/chenchon/FEZ/HALO_lib_header/build/CMakeFiles/rebuild_cache.dir

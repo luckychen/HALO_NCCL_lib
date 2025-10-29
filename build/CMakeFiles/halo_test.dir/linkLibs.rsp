@@ -1,1 +1,0 @@
- -Wl,-rpath,/home/ceoas/chenchon/miniconda3_ppc64/envs/halo_test/lib /home/ceoas/chenchon/miniconda3_ppc64/envs/halo_test/lib/libnccl.so /home/ceoas/chenchon/miniconda3_ppc64/envs/halo_test/lib/libmpi.so "/usr/local/cuda-12.2/targets/ppc64le-linux/lib/libcudart.so" -lcudadevrt -lcudart_static -lrt -lpthread -ldl 
