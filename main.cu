@@ -194,6 +194,7 @@ bool compareResults(const T* data1, const T* data2, int size, T tolerance)
 {
     int errors = 0;
     T maxDiff = 0;
+	int maxDiffIdx = 0;
 
     for (int i = 0; i < size; i++) {
         T diff = std::abs(data1[i] - data2[i]);
@@ -205,9 +206,10 @@ bool compareResults(const T* data1, const T* data2, int size, T tolerance)
             }
         }
         maxDiff = std::max(maxDiff, diff);
+		maxDiffIdx = i;
     }
 
-    printf("Max difference: %f, Errors: %d / %d\n", (float)maxDiff, errors, size);
+    printf("Max difference: %f at idx %d with data1 %f data2 %f, Errors: %d / at idx  %d\n", (float)maxDiff, maxDiffIdx, data1[maxDiffIdx], data2[maxDiffIdx], errors, size);
     return errors == 0;
 }
 
@@ -338,9 +340,9 @@ int main(int argc, char* argv[])
     DataType* cudaBuffer;
     allocateDeviceMemory<DataType>(&cudaBuffer,
                                    (innerWidth + 2 * haloWidth) * (innerHeight + 2 * haloWidth));
-    CUDACHECK(cudaMemcpy(cudaBuffer, exchangeDescr.localData,
-                        (innerWidth + 2 * haloWidth) * (innerHeight + 2 * haloWidth) * sizeof(DataType),
-                        cudaMemcpyDeviceToDevice));
+    //CUDACHECK(cudaMemcpy(cudaBuffer, exchangeDescr.localData,
+    //                    (innerWidth + 2 * haloWidth) * (innerHeight + 2 * haloWidth) * sizeof(DataType),
+    //                    cudaMemcpyDeviceToDevice));
 
     // Step 5: Perform iterations
     for (int iter = 0; iter < numIterations; iter++) {
