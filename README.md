@@ -208,11 +208,6 @@ Configuration:
 Test completed successfully!
 ```
 
-## Documentation
-
-- **[CLAUDE.md](CLAUDE.md)** - Project overview, architecture, and design decisions
-- **[BUG_FIX.md](BUG_FIX.md)** - Detailed description of bugs found and fixes applied
-
 ## Key Classes and Functions
 
 ### `descrMPI<T>`
@@ -269,14 +264,6 @@ See [BUG_FIX.md](BUG_FIX.md) for detailed information.
 - GPU memory layout optimized for 2D stencil operations
 - Halo data preserved between iterations
 
-## Future Improvements
-
-- [ ] Support for 3D grid topology
-- [ ] Overlap computation and communication
-- [ ] CUDA graph support
-- [ ] Automatic load balancing
-- [ ] Support for irregular grids
-
 ## License
 
 This project is provided as-is for research and educational purposes.
@@ -287,16 +274,8 @@ This project is provided as-is for research and educational purposes.
 - MPI Standard: https://www.mpi-forum.org/
 - Halo Exchange Pattern: https://en.wikipedia.org/wiki/Halo_exchange
 
-## Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push and create a pull request
-
 ---
 
-**Author**: Generated with Claude Code
-**Date**: 2024
+**Author**: Manually coded by Chong Chen, Generated with help from Claude Code
+**Date**: 2025
 **Status**: Production-ready (tested on PowerPC 4-GPU configuration)
