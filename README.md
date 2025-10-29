@@ -31,6 +31,18 @@ descrMPI<float> descriptor(rank, numRanks, totalWidth, totalHeight,
                           gridWidth, gridHeight, haloWidth);
 ```
 
+### Constructor Parameters
+
+- **`rank`**: The MPI rank of the current process (0 to numRanks-1)
+- **`numRanks`**: Total number of MPI ranks in the computation
+- **`totalWidth`**: Global domain width (full problem size in X dimension)
+- **`totalHeight`**: Global domain height (full problem size in Y dimension)
+- **`innerWidth`**: Width per rank = totalWidth / gridWidth (local domain size without halo)
+- **`innerHeight`**: Height per rank = totalHeight / gridHeight (local domain size without halo)
+- **`gridWidth`**: Number of ranks in the X dimension (grid columns)
+- **`gridHeight`**: Number of ranks in the Y dimension (grid rows)
+- **`haloWidth`**: Width of the boundary padding region for neighbor communication
+
 **Rank 0 (index 0) allocates:**
 - `h_globalData`: Full domain
 - `h_sendBuffer`: MPI send buffer
