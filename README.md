@@ -124,6 +124,16 @@ int main(int argc, char* argv[]) {
 }
 ```
 
+## Example Application
+
+The `main.cu` file in this project demonstrates how to utilize the HALO library with a convolutional kernel function. The example compares the results between CPU and GPU implementations to validate the correctness of the distributed GPU computation:
+
+- **CPU Implementation**: Serial computation for reference and verification
+- **GPU Implementation**: Parallel computation with halo exchange using NCCL
+- **Comparison**: Results from both implementations are compared to ensure numerical accuracy
+
+This practical example showcases the complete workflow: initializing the halo pattern infrastructure, performing distributed GPU computations with a convolutional kernel, and verifying results against a CPU baseline.
+
 ## Building
 
 ### Requirements
@@ -155,7 +165,31 @@ Run the included test with 4 ranks on a 2×2 GPU grid:
 mpirun -n 4 ./halo_test 1024 1024 2 2 2 3
 ```
 
-Arguments: `<totalWidth> <totalHeight> <gridWidth> <gridHeight> <haloWidth> [numIterations]`
+### Command Arguments
+
+The `mpirun` command executes the test program with the following parameters:
+
+- **`-n 4`**: Run 4 GPU processes (one per GPU in a 2×2 grid)
+- **`1024 1024`**: Original data size (1024 × 1024 pixels)
+- **`2 2`**: 2×2 GPU grid topology (each GPU handles a 512×512 local domain)
+- **`2`**: Halo width = 2 (represents a 5×5 convolution kernel: center + 2 pixels in each direction)
+- **`3`**: Number of iterations (convolution operations performed 3 times sequentially, with output of one iteration becoming input to the next)
+
+### Computation Details
+
+The test performs the same **5×5 convolutional operation** on the 1024×1024 data across two different compute paths:
+
+1. **Distributed GPU Computation**:
+   - Data is decomposed across 4 GPUs in a 2×2 grid
+   - Each GPU computes its local 512×512 domain plus halo regions
+   - Halo data is exchanged between neighboring GPUs using NCCL
+   - 3 sequential iterations of convolution with result feedback
+
+2. **Serial CPU Computation**:
+   - Same convolution operation executed serially on CPU
+   - Results from one iteration feed into the next
+
+3. **Verification**: Results from both distributed GPU and serial CPU computations are compared to ensure numerical accuracy and correctness of the halo exchange mechanism
 
 Expected output:
 ```

@@ -1,0 +1,1 @@
+/bin/g++ @CMakeFiles/halo_test.dir/objects1.rsp CMakeFiles/halo_test.dir/cmake_device_link.o -o halo_test @CMakeFiles/halo_test.dir/linkLibs.rsp -L"/usr/local/cuda/targets/ppc64le-linux/lib/stubs" -L"/usr/local/cuda/targets/ppc64le-linux/lib"
